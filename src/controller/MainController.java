@@ -36,26 +36,18 @@ public class MainController implements ActionListener{
             Week03Client.serverOut.println(input);
             
         } else if(e.getSource()==page.getB2()){
+            Week03Client.serverOut.println("C");
             String a = JOptionPane.showInputDialog("Enter student name:");
-            char b = JOptionPane.showInputDialog("Enter student gender:").charAt(0);
-            int c = Integer.parseInt(JOptionPane.showInputDialog("Enter student pin:"));
-            double d = Double.parseDouble(JOptionPane.showInputDialog("Enter student balance:"));
-            Student s = new Student(a,b,c,d);  
-            data.add(s);
+            Week03Client.serverOut.println(a);
+            String b = JOptionPane.showInputDialog("Enter student gender:");
+            Week03Client.serverOut.println(b);
+            String c = JOptionPane.showInputDialog("Enter student pin:");
+            Week03Client.serverOut.println(c);
+            String d = JOptionPane.showInputDialog("Enter student balance:");
+            Week03Client.serverOut.println(d);
+            
         } else if(e.getSource()==page.getB3()){
-            Student s;
-            try{
-                Iterator student = data.iterator();
-                while(student.hasNext()){
-                    s = (Student)student.next();
-                    System.out.println(s.getName()+"\t"+s.getPin()+"\t"+"\t"+s.getBalance());
-                }
-                ObjectOutputStream objectOutputFile = new ObjectOutputStream(new FileOutputStream("Student.dat"));
-                objectOutputFile.writeObject(data);
-                objectOutputFile.close();
-            } catch(IOException ex){
-                System.out.println("Output error!");
-            }            
+            Week03Client.serverOut.println("Client is leaving");
             System.exit(0);
         }        
     }
