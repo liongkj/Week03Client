@@ -47,7 +47,7 @@ public class MainGUI extends JFrame {
         add(b2);
         add(b3);
         setLocation(300,200);
-        setSize(150,100);
+        setSize(300,200);
         g1 = new StudentGUI();
         g1.setGUI(this);
         setVisible(true);
