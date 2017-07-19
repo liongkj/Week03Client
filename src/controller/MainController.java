@@ -11,10 +11,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Iterator;
-import java.util.List;
 import javax.swing.JOptionPane;
-import model.Student;
 import view.MainGUI;
+import week03client.Week03Client;
+
 
 /**
  *
@@ -22,32 +22,19 @@ import view.MainGUI;
  */
 public class MainController implements ActionListener{
     private MainGUI page;
-    private List<Student> data;
 
     public MainController(MainGUI x) {
         this.page = x;
     }
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==page.getB1()){
+            //send server char 's' 
+            Week03Client.serverOut.println("S");
             String input = JOptionPane.showInputDialog("Enter your username:");
-            Student s = null;
-            for(int i=0; i<data.size(); i++){
-                if(input.equals(((Student)(data.get(i))).getName())){
-                    s = (Student)(data.get(i));
-                    break;
-                }
-            }
-            if(s != null){
-                if(s.Login()){
-                    page.getG1().setVisible(true);
-                    page.getG1().setStudent(s);
-                    page.setVisible(false);    
-                } else{
-                    JOptionPane.showMessageDialog(page.getB1(),"Wrong password!");
-                }
-            } else{
-                JOptionPane.showMessageDialog(page.getB1(),"Wrong username!");
-            }            
+            Week03Client.serverOut.println(input);
+            input=JOptionPane.showInputDialog("Enter your pin:");
+            Week03Client.serverOut.println(input);
+            
         } else if(e.getSource()==page.getB2()){
             String a = JOptionPane.showInputDialog("Enter student name:");
             char b = JOptionPane.showInputDialog("Enter student gender:").charAt(0);
